@@ -12,3 +12,7 @@
 .hs-hire-link{white-space:nowrap;color:#c34020;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:700px){.hs-header-ctas{gap:6px}.nx-header .hs-hire-btn{padding:11px 10px}.nx-header .jp-header-cta .jp-free-badge{display:none}}
 @media(max-width:370px){.nx-header .hs-hire-btn,.nx-header .jp-header-cta{padding:10px 8px;font-size:10px!important}}
+.nx-header .hs-hire-btn{padding:6px 14px;gap:0}
+.nx-header .hs-hire-btn img{display:block;height:28px;width:auto;max-width:150px;object-fit:contain}
+.nx-header .hs-hire-btn:hover{background:#f3f4ed;color:#242420}
+@media(max-width:700px){.nx-header .hs-hire-btn{padding:5px 8px}.nx-header .hs-hire-btn img{height:22px;max-width:96px}}
