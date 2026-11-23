@@ -1,0 +1,79 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      APP_DIR: ${{ vars.APP_DIR || '/var/www/hirestaffislamabad' }}
+      APP_PORT: ${{ vars.APP_PORT || '3010' }}
+      # Public business details (Settings → Secrets and variables → Actions → Variables)
+      NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://hirestaffislamabad.com' }}
+      NEXT_PUBLIC_PHONE: ${{ vars.NEXT_PUBLIC_PHONE }}
+      NEXT_PUBLIC_WHATSAPP: ${{ vars.NEXT_PUBLIC_WHATSAPP }}
+      NEXT_PUBLIC_EMAIL: ${{ vars.NEXT_PUBLIC_EMAIL }}
+      NEXT_PUBLIC_STREET_ADDRESS: ${{ vars.NEXT_PUBLIC_STREET_ADDRESS }}
+      NEXT_PUBLIC_ADDRESS_LOCALITY: ${{ vars.NEXT_PUBLIC_ADDRESS_LOCALITY }}
+      NEXT_PUBLIC_POSTAL_CODE: ${{ vars.NEXT_PUBLIC_POSTAL_CODE }}
+      NEXT_PUBLIC_OPENING_HOURS: ${{ vars.NEXT_PUBLIC_OPENING_HOURS }}
+      NEXT_PUBLIC_GBP_URL: ${{ vars.NEXT_PUBLIC_GBP_URL }}
+      NEXT_PUBLIC_SAME_AS: ${{ vars.NEXT_PUBLIC_SAME_AS }}
+      GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+      BING_SITE_VERIFICATION: ${{ vars.BING_SITE_VERIFICATION }}
+      SITE_INDEXING: ${{ vars.SITE_INDEXING || 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+
+      - name: Assemble standalone bundle
+        run: |
+          cp -r public .next/standalone/public
+          mkdir -p .next/standalone/.next
+          cp -r .next/static .next/standalone/.next/static
+          cp ecosystem.config.cjs .next/standalone/
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "${{ secrets.VPS_PORT || 22 }}" -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Upload release
+        run: |
+          RELEASE=$(date +%Y%m%d%H%M%S)-${GITHUB_SHA::7}
+          echo "RELEASE=$RELEASE" >> $GITHUB_ENV
+          SSH="ssh -i ~/.ssh/deploy_key -p ${{ secrets.VPS_PORT || 22 }}"
+          $SSH ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "mkdir -p $APP_DIR/releases/$RELEASE"
+          rsync -az --delete -e "$SSH" .next/standalone/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:$APP_DIR/releases/$RELEASE/
+
+      - name: Activate release
+        run: |
+          ssh -i ~/.ssh/deploy_key -p ${{ secrets.VPS_PORT || 22 }} ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} bash -s <<EOS
+          set -e
+          cd $APP_DIR
+          ln -sfn releases/$RELEASE current
+          cd current
+          PORT=$APP_PORT pm2 startOrReload ecosystem.config.cjs --update-env
+          pm2 save
+          sleep 3
+          curl -fsS -o /dev/null http://127.0.0.1:$APP_PORT/ && echo "Site is up"
+          ls -1dt $APP_DIR/releases/* | tail -n +6 | xargs -r rm -rf
+          EOS
