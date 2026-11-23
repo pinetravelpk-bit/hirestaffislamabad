@@ -1,8 +1,8 @@
-name: Deploy to VPS
+name: Deploy to VPS (SSH, optional)
 
+# Default deployment is pull-based: deploy/pull-deploy.sh on the VPS checks main every 5 minutes.
+# This workflow is a manual alternative that needs VPS_HOST, VPS_USER and VPS_SSH_KEY secrets.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 concurrency:

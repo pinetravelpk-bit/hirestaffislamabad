@@ -32,7 +32,9 @@ npm run dev
 
 ## Deploy (VPS)
 
-Deployment runs from GitHub Actions (`.github/workflows/deploy.yml`) on every push to `main`: build → upload the standalone bundle over SSH → PM2 reload → health check. Nginx proxies the domain to `127.0.0.1:3010`.
+**Default: pull-based.** On the VPS, `bash deploy/pull-deploy.sh --install` builds `main`, starts it with PM2 on port 3010 and adds a cron job that redeploys within 5 minutes of every push to `main`. Business details go in `/etc/hirestaffislamabad.env` (same names as `.env.example`); run `bash deploy/pull-deploy.sh --force` after editing it. Log: `/var/log/hirestaffislamabad-deploy.log`.
+
+**Optional: push-based** from GitHub Actions (`.github/workflows/deploy.yml`) on every push to `main`: build → upload the standalone bundle over SSH → PM2 reload → health check. Nginx proxies the domain to `127.0.0.1:3010`.
 
 1. On the VPS (once, as root): copy the `deploy/` folder and run `bash deploy/setup-vps.sh you@example.com` (installs Node 22, PM2, Nginx, Certbot and issues SSL for the apex and `www`).
 2. In GitHub → Settings → Secrets and variables → Actions → **Secrets**: `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY` (private key whose public key is in the server's `authorized_keys`), optionally `VPS_PORT`.
