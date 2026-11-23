@@ -8,6 +8,8 @@ The original Hirestaff Next.js theme (v6) — homepage, Studio, job board, free 
 
 - Job board API routes (`app/api/`) serving vacancies from `data/jobs.json`, replacing the theme's Cloudflare Worker/D1 backend that cannot run on a VPS.
 - Post a job: without the hosted sign-in, “Publish” sends the vacancy to the Hirestaff team by WhatsApp/email for review.
+- CV builder: 8 extra designer templates (Executive, Slate, Orbit, Fresh, Arc, Timeline, Bold, Elegant) with photo and skill bars, alongside the theme's 3 text templates.
+- Accounts and online CVs: username/password accounts (scrypt-hashed, SQLite via `node:sqlite` in `DATA_DIR`), public CV pages at `/cv/<username>/` with share links, and `/account/` to manage publishing, contact visibility, password and deletion.
 - SEO layer only: canonical URLs, Open Graph image, Organization/WebSite/WebApplication schema, `robots.txt`, `sitemap.xml`, `llms.txt`. The theme's fictional demo pages stay noindex.
 
 ## Business details

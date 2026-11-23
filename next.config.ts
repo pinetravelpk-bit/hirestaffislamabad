@@ -1,5 +1,5 @@
 import type {NextConfig} from 'next';
-const noindex=['/studio/:path*','/platform/:path*','/classic/:path*','/browse/:path*','/cities/:path*','/categories/:path*','/jobs/:path*','/companies/north-studio/:path*','/manage-jobs/:path*','/job/:path*','/company/:path*','/api/:path*'];
+const noindex=['/studio/:path*','/platform/:path*','/classic/:path*','/browse/:path*','/cities/:path*','/categories/:path*','/jobs/:path*','/companies/north-studio/:path*','/manage-jobs/:path*','/job/:path*','/company/:path*','/account/:path*','/api/:path*'];
 const config:NextConfig={
   output:'standalone',
   trailingSlash:true,

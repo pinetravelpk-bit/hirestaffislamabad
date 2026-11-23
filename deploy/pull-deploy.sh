@@ -44,9 +44,10 @@ cp ecosystem.config.cjs "$REL/"
 echo "$NEW" > "$REL/.release"
 ln -sfn "$REL" "$APP_DIR/current"
 
+mkdir -p "$APP_DIR/data"
 cd "$APP_DIR/current"
 pm2 delete hirestaffislamabad >/dev/null 2>&1 || true
-PORT=$PORT pm2 start ecosystem.config.cjs --update-env
+DATA_DIR="$APP_DIR/data" PORT=$PORT pm2 start ecosystem.config.cjs --update-env
 pm2 save >/dev/null
 sleep 3
 curl -fsS -o /dev/null "http://127.0.0.1:$PORT/" && echo "[$(date)] Site is up on port $PORT"
