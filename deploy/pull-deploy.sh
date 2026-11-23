@@ -21,6 +21,9 @@ if [ "${1:-}" = "--install" ]; then
   echo "Auto-deploy installed (every 5 minutes). Log: $LOG"
 fi
 
+# Online CV pages are stored here (outside releases, so deploys never wipe them)
+mkdir -p "${CV_DATA_DIR:-/var/lib/hirestaffislamabad/cv}" && chmod 700 "${CV_DATA_DIR:-/var/lib/hirestaffislamabad/cv}"
+
 cd "$REPO_DIR"
 git fetch -q origin main
 NEW=$(git rev-parse origin/main)
