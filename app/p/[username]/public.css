@@ -1,0 +1,22 @@
+.cvp{min-height:100vh;background:#ecebe5;font-family:"Segoe UI",Helvetica,Arial,sans-serif;color:#222;padding-bottom:40px}
+.cvp-bar{display:flex;justify-content:space-between;align-items:center;padding:14px max(20px,calc(50% - 420px));background:#fff;border-bottom:1px solid #ddd}
+.cvp-logo{font-weight:800;font-size:22px;letter-spacing:-1px;color:#242420;text-decoration:none;display:flex;align-items:center;gap:8px}
+.cvp-logo i{width:12px;height:12px;background:#f34e25;transform:rotate(45deg);border-radius:2px}
+.cvp-cta{font-size:13px;font-weight:700;background:#242420;color:#fff;padding:9px 14px;border-radius:7px;text-decoration:none}
+.cvp-hidden{max-width:840px;margin:16px auto 0;padding:12px 16px;background:#fff4d6;border-radius:8px;font-size:14px}
+.cvp-actions{max-width:840px;margin:18px auto 0;padding:0 16px}
+.cvp-row{display:flex;flex-wrap:wrap;gap:8px}
+.cvp-btn{font:inherit;font-size:14px;font-weight:600;padding:10px 16px;border-radius:8px;background:#fff;border:1px solid #cfcfc6;color:#222;text-decoration:none;cursor:pointer}
+.cvp-btn.wa{background:#25d366;border-color:#25d366;color:#fff}
+.cvp-btn.dark{background:#242420;border-color:#242420;color:#fff;margin-left:auto}
+.cvp-actions .hb-share{margin-top:10px}
+.cvp-paper{max-width:840px;margin:16px auto 0;padding:0 16px}
+.cvp-paper .cv-sheet{box-shadow:0 20px 50px #0000001f;min-height:1000px}
+.cvp-paper .cv-sheet:not(.cv-designer){padding:48px}
+.cvp-paper .cv-designer .cv-name h2{font-size:36px}
+.cvp-paper .cv-sheet section p,.cvp-paper .cv-sheet li{font-size:13px}
+.cvp-paper .cv-designer .cv-side p,.cvp-paper .cv-designer .cv-side li{font-size:12.5px}
+.cvp-foot{text-align:center;font-size:13px;color:#666;margin-top:26px}
+.cvp-foot a{color:#444}
+@media(max-width:600px){.cvp-paper{padding:0}.cvp-paper .cv-sheet:not(.cv-designer){padding:26px 20px}.cvp-btn.dark{margin-left:0}}
+@media print{.cvp{background:#fff;padding:0}.cvp-bar,.cvp-actions,.cvp-foot,.cvp-hidden{display:none!important}.cvp-paper{max-width:none;margin:0;padding:0}.cvp-paper .cv-sheet{box-shadow:none;min-height:0}}

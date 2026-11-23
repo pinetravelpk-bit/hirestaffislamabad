@@ -35,3 +35,11 @@ npm run dev
 ## Adding vacancies
 
 Edit `data/jobs.json` (format in `data/README.md`) and push.
+
+## Online CV pages
+
+- `/cv/` — 12 CV templates (3 direct-PDF + 9 designer templates with photo, sidebars, timeline, skill bars). Designer templates save as PDF via the browser print window.
+- “Create my CV page” publishes the CV at `/p/<username>/` and gives the person a username + generated password.
+- `/cv/account/` — sign in, edit, hide/show, share, change password, delete.
+- Public pages have share buttons, WhatsApp/Call/Email, a per-CV social preview image and are listed in `sitemap.xml`.
+- Accounts are JSON files in `CV_DATA_DIR` (default `/var/lib/hirestaffislamabad/cv`), outside the release folders, so deploys keep them. Back this folder up.
