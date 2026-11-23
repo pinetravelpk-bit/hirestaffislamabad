@@ -1,0 +1,5 @@
+'use client';
+import {useT} from './locale';
+import type {Row} from './model';
+export type Field={key:string;label:string;type?:string;options?:string[];required?:boolean};
+export function RecordForm({fields,initial={},onSave,submit='Save locally'}:{fields:Field[];initial?:Partial<Row>;onSave:(r:Record<string,string>)=>void;submit?:string}){const t=useT();return <form className="pf-form" onSubmit={e=>{e.preventDefault();onSave(Object.fromEntries(new FormData(e.currentTarget)) as Record<string,string>)}}>{fields.map(f=><label key={f.key}>{t(f.label)}{f.options?<select name={f.key} defaultValue={initial[f.key]||f.options[0]} required={f.required}>{f.options.map(s=><option key={s} value={s}>{t(s)}</option>)}</select>:f.type==='textarea'?<textarea rows={4} name={f.key} defaultValue={initial[f.key]||''} required={f.required}/>:<input type={f.type||'text'} min={f.type==='number'?0:undefined} name={f.key} defaultValue={initial[f.key]||''} required={f.required}/>}</label>)}<button className="btn orange">{t(submit)} ↗</button></form>}

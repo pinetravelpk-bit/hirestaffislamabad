@@ -3,12 +3,12 @@
 const env=(k:string)=>(process.env[k]||'').trim();
 
 export const site={
-  name:'Hire Staff Islamabad',
+  name:'Hirestaff Islamabad',
   shortName:'Hirestaff',
-  legalName:env('NEXT_PUBLIC_LEGAL_NAME')||'Hire Staff Islamabad',
+  legalName:env('NEXT_PUBLIC_LEGAL_NAME')||'Hirestaff Islamabad',
   url:(env('NEXT_PUBLIC_SITE_URL')||'https://hirestaffislamabad.pk').replace(/\/$/,''),
-  tagline:'Domestic, care and office staff for homes and businesses in Islamabad and Rawalpindi',
-  description:'Hire Staff Islamabad helps families and businesses hire maids, cooks, drivers, nannies, elderly care attendants, security guards, office boys and other staff in Islamabad and Rawalpindi. Job seekers can find work and build a free CV.',
+  tagline:'Your next job? Think bigger.',
+  description:'Find jobs in Islamabad and across Pakistan, post a job for free, build a free CV and create a company profile. A career and hiring platform built for Pakistan.',
   phone:env('NEXT_PUBLIC_PHONE'),            // e.g. +92 300 1234567
   whatsapp:env('NEXT_PUBLIC_WHATSAPP').replace(/\D/g,''), // digits with country code, e.g. 923001234567
   email:env('NEXT_PUBLIC_EMAIL')||'info@hirestaffislamabad.pk',
