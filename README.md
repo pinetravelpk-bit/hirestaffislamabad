@@ -1,4 +1,4 @@
-# hirestaffislamabad.com
+# hirestaffislamabad.pk
 
 Website for **Hire Staff Islamabad** — domestic, care and office staffing in Islamabad and Rawalpindi — built on the Hirestaff Next.js theme (v6 design).
 

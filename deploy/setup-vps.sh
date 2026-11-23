@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# One-time setup for hirestaffislamabad.com on an Ubuntu/Debian VPS.
+# One-time setup for hirestaffislamabad.pk on an Ubuntu/Debian VPS.
 # Run as root:  bash setup-vps.sh you@example.com
 # It installs Node.js 22, PM2, Nginx and Certbot, adds an Nginx site for the domain,
 # and issues a free Let's Encrypt certificate. It does not touch other Nginx sites.
 set -euo pipefail
 EMAIL="${1:?Usage: bash setup-vps.sh <email-for-ssl-notices>}"
-DOMAIN=hirestaffislamabad.com
+DOMAIN=hirestaffislamabad.pk
 APP_DIR=/var/www/hirestaffislamabad
 DEPLOY_USER="${DEPLOY_USER:-root}"
 

@@ -20,7 +20,7 @@ export function Footer(){
     <div><strong>Hire staff</strong>{services.slice(0,8).map(s=><a key={s.slug} href={`/services/${s.slug}/`}>{s.plural}</a>)}<a href="/services/">All services</a></div>
     <div><strong>Islamabad & Rawalpindi</strong>{['dha-islamabad','bahria-town','f-7','f-11','g-11','e-11','i-8'].map(a=><a key={a} href={`/areas/${a}/`}>Staff in {areaBySlug(a)?.name}</a>)}<a href="/areas/">All areas</a></div>
     <div><strong>Company</strong><a href="/about/">About us</a><a href="/how-it-works/">How it works</a><a href="/request-staff/">Request staff</a><a href="/find-jobs/">Find jobs</a><a href="/cv/">Free CV maker</a><a href="/post-job/">Post a job free</a><a href="/guides/">Hiring guides</a><a href="/faqs/">FAQs</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
-    <p className="nx-footer-note">© {new Date().getFullYear()} {site.name} · hirestaffislamabad.com · Serving Islamabad Capital Territory and Rawalpindi.</p>
+    <p className="nx-footer-note">© {new Date().getFullYear()} {site.name} · hirestaffislamabad.pk · Serving Islamabad Capital Territory and Rawalpindi.</p>
   </footer>;
 }
 

@@ -17,7 +17,7 @@ jobs:
       APP_DIR: ${{ vars.APP_DIR || '/var/www/hirestaffislamabad' }}
       APP_PORT: ${{ vars.APP_PORT || '3010' }}
       # Public business details (Settings → Secrets and variables → Actions → Variables)
-      NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://hirestaffislamabad.com' }}
+      NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://hirestaffislamabad.pk' }}
       NEXT_PUBLIC_PHONE: ${{ vars.NEXT_PUBLIC_PHONE }}
       NEXT_PUBLIC_WHATSAPP: ${{ vars.NEXT_PUBLIC_WHATSAPP }}
       NEXT_PUBLIC_EMAIL: ${{ vars.NEXT_PUBLIC_EMAIL }}

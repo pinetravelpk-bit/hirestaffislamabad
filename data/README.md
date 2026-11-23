@@ -26,7 +26,7 @@ Add genuine vacancies only. Each entry:
     "benefits": "Private room, meals, Sunday off",
     "applyMethod": "email",
     "applyUrl": "",
-    "applyEmail": "jobs@hirestaffislamabad.com",
+    "applyEmail": "jobs@hirestaffislamabad.pk",
     "deadline": "2026-12-31"
   }
 }

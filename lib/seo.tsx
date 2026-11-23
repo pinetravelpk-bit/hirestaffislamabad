@@ -51,7 +51,7 @@ export function organizationSchema(){
 }
 
 export function websiteSchema(){
-  return {'@type':'WebSite','@id':webId,url:site.url,name:site.name,alternateName:['Hirestaff','HireStaff Islamabad','hirestaffislamabad.com'],inLanguage:'en-PK',publisher:{'@id':orgId},
+  return {'@type':'WebSite','@id':webId,url:site.url,name:site.name,alternateName:['Hirestaff','HireStaff Islamabad','hirestaffislamabad.pk'],inLanguage:'en-PK',publisher:{'@id':orgId},
     potentialAction:{'@type':'SearchAction',target:{'@type':'EntryPoint',urlTemplate:abs('/find-jobs/?q={search_term_string}')},'query-input':'required name=search_term_string'}};
 }
 
