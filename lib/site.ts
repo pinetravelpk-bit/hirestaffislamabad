@@ -22,7 +22,7 @@ export const site={
   sameAs:env('NEXT_PUBLIC_SAME_AS').split(',').map(s=>s.trim()).filter(Boolean),
   geo:{lat:33.6844,lng:73.0479}, // Islamabad city centre (service-area business)
   founded:env('NEXT_PUBLIC_FOUNDED'),
-  updated:'2026-11-22',
+  updated:'2026-11-24',
   indexing:env('SITE_INDEXING')!=='false',
 };
 
